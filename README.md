@@ -1,14 +1,31 @@
 # Hermes Reddit
 
-Minimal public repository used as the source-code URL for Reddit API registration.
+Public source repository for the MeshPilot/Hermes Reddit integration.
 
-This repository exists only to document the project and satisfy Reddit's app registration requirement.
+This repository is intentionally small and non-sensitive. It exists to satisfy Reddit app registration requirements and to document the shape of the integration without exposing credentials or private operational data.
 
-## Purpose
-- Reddit monitoring
-- Posting and replies via Reddit API
-- Internal assistant integration for MeshPilot/Hermes
+## What this project is for
+- Reading public Reddit content
+- Authenticated posting and replying via Reddit API
+- Lightweight operator workflow for Hermes / MeshPilot
+
+## Repository contents
+- `src/hermes_reddit/` — small Python package with client/config/CLI scaffolding
+- `.env.example` — example environment variables, with no secrets
+- `pyproject.toml` — package metadata and dependencies
+
+## Security / privacy
+- No API keys or tokens are stored in this repository.
+- No private customer data is stored here.
+- The repo is public because Reddit asks for a public source-code URL during app registration.
+
+## Local setup
+```bash
+python -m pip install -e .
+cp .env.example .env
+python -m hermes_reddit.cli health
+```
 
 ## Notes
-- No secrets are stored here.
-- No production logic is required for the registration step.
+- Public monitoring works without auth.
+- Authenticated actions require Reddit app credentials stored locally, not in git.
